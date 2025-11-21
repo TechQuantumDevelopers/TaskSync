@@ -1,3 +1,45 @@
 <resources>
     <string name="app_name">TaskSync</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_today">Today</string>
+    <string name="dashboard_upcoming">Upcoming</string>
+    <string name="dashboard_you_have_active_tasks">You have %1$d active tasks.</string>
+    <string name="dashboard_projects">Projects</string>
+    <string name="dashboard_view_all">View All</string>
+
+    <!-- Task / AddEdit -->
+    <string name="task_add">Add Task</string>
+    <string name="task_edit">Edit Task</string>
+    <string name="task_save">Save</string>
+    <string name="task_priority">Priority</string>
+    <string name="task_title">Task Title</string>
+    <string name="task_project_name">Project Name</string>
+    <string name="task_due_date">Due Date</string>
+    <string name="task_select_date">Select Date</string>
+    <string name="task_category">Category</string>
+    <string name="task_quarter">Quarter</string>
+    <string name="task_description">Description</string>
+    <string name="task_reminder">Reminder</string>
+    <string name="task_complete">Complete Task</string>
+    <string name="task_subtasks">Subtasks</string>
+    <string name="task_completed_of_total">%1$d of %2$d completed</string>
+    <string name="task_reminders">Reminders</string>
+
+    <!-- Common / Actions / Content descriptions -->
+    <string name="common_close">Close</string>
+    <string name="common_notifications">Notifications</string>
+    <string name="common_add_task_cd">Add Task</string>
+    <string name="common_notifications_cd">Notifications</string>
+    <string name="common_edit">Edit</string>
+    <string name="common_archive">Archive</string>
+
+    <!-- Theme -->
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_light_label">Light theme</string>
+    <string name="theme_dark_label">Dark theme</string>
+
+    <!-- Splash -->
+    <string name="splash_ts_initials">TS</string>
 </resources>

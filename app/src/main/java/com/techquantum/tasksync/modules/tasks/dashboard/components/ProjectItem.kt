@@ -17,9 +17,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.techquantum.tasksync.data.model.Project
 import com.techquantum.tasksync.ui.theme.ThemeColors
+import com.techquantum.tasksync.ui.theme.AppDimension
 
 @Composable
 fun ProjectItem(
@@ -30,13 +30,14 @@ fun ProjectItem(
     Column(
         modifier = Modifier.wrapContentWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(AppDimension.Spacing.GRID_GAP)
     ) {
         Surface(
             onClick = onClick,
-            modifier = Modifier.size(64.dp),
-            shape = RoundedCornerShape(12.dp),
-            color = if (isSelected) ThemeColors.Primary else Color(0xFFE5E7EB)
+            modifier = Modifier.size(AppDimension.IconSize.FAB),
+            shape = RoundedCornerShape(AppDimension.Radius.MD),
+            color = if (isSelected) ThemeColors.Primary else ThemeColors.Secondary.copy(alpha = 0.15f),
+            tonalElevation = if (isSelected) AppDimension.Elevation.CARD else 0.dp
         ) {
             Box(
                 contentAlignment = Alignment.Center
@@ -44,21 +45,21 @@ fun ProjectItem(
                 Icon(
                     imageVector = project.icon,
                     contentDescription = project.name,
-                    tint = if (isSelected) Color.White else ThemeColors.TextLight,
-                    modifier = Modifier.size(30.dp)
+                    tint = if (isSelected) Color.White else ThemeColors.TextPrimary,
+                    modifier = Modifier.size(AppDimension.IconSize.XLARGE)
                 )
             }
         }
 
         Text(
             text = project.name.orEmpty(),
-            fontSize = 14.sp,
+            fontSize = AppDimension.FontSize.MD,
             fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
-            color = if (isSelected) ThemeColors.Primary else ThemeColors.TextSecondary,
+            color = if (isSelected) Color.White else ThemeColors.TextSecondary,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Center,
-            lineHeight = 18.sp
+            lineHeight = AppDimension.FontSize.MD
         )
     }
 }

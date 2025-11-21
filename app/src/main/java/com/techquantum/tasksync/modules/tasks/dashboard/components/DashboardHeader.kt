@@ -18,13 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.techquantum.tasksync.R
+import com.techquantum.tasksync.ui.theme.AppDimension
 import com.techquantum.tasksync.ui.theme.ThemeColors
 import com.techquantum.tasksync.ui.theme.ThemeToggle
 import com.techquantum.tasksync.ui.theme.ThemeManager
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun DashboardHeader(
@@ -35,9 +35,9 @@ fun DashboardHeader(
         modifier = Modifier
             .fillMaxWidth()
             .background(ThemeColors.BackgroundLight)
-            .padding(16.dp)
+            .padding(AppDimension.Padding.LG)
     ) {
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(AppDimension.Padding.SM))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -48,7 +48,7 @@ fun DashboardHeader(
             // Greeting
             Text(
                 text = stringResource(R.string.app_name),
-                fontSize = 28.sp,
+                fontSize = AppDimension.FontSize.XXL,
                 fontWeight = FontWeight.Bold,
                 color = ThemeColors.TextLight,
                 lineHeight = 32.sp
@@ -56,29 +56,29 @@ fun DashboardHeader(
 
 
             // Theme toggle and Notification Button
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimension.Spacing.GRID_GAP)) {
                 ThemeToggle(isDark = ThemeManager.isDarkTheme.value, onToggle = { ThemeManager.toggle() })
 
                 IconButton(
                     onClick = onNotificationClick,
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier.size(AppDimension.IconSize.MEDIUM)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Notifications,
-                        contentDescription = "Notifications",
+                        contentDescription = stringResource(R.string.common_notifications_cd),
                         tint = ThemeColors.TextLight,
-                        modifier = Modifier.size(24.dp)
+                        modifier = Modifier.size(AppDimension.IconSize.MEDIUM)
                     )
                 }
             }
         }
 
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(AppDimension.Padding.XS))
 
         // Active tasks count
         Text(
-            text = "You have $activeTasksCount active tasks.",
-            fontSize = 16.sp,
+            text = stringResource(R.string.dashboard_you_have_active_tasks, activeTasksCount),
+            fontSize = AppDimension.FontSize.LG,
             fontWeight = FontWeight.Normal,
             color = ThemeColors.TextSecondary,
             lineHeight = 24.sp

@@ -18,40 +18,41 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.techquantum.tasksync.R
+import com.techquantum.tasksync.ui.theme.AppDimension
 import com.techquantum.tasksync.ui.theme.ThemeColors
 
 @Composable
 fun RemindersSection(reminder: String, onEditReminder: () -> Unit = {}) {
-    Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)) {
+    Column(modifier = Modifier.padding(horizontal = AppDimension.Padding.LG, vertical = AppDimension.Padding.LG)) {
         Text(
-            text = "Reminders",
-            fontSize = 18.sp,
+            text = stringResource(R.string.task_reminders),
+            fontSize = AppDimension.FontSize.XL,
             fontWeight = FontWeight.Bold,
             color = ThemeColors.TextPrimary,
-            modifier = Modifier.padding(bottom = 8.dp)
+            modifier = Modifier.padding(bottom = AppDimension.Padding.SM)
         )
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(AppDimension.Radius.SM))
                 .background(ThemeColors.CardBackground)
-                .padding(12.dp),
+                .padding(AppDimension.Padding.MD),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+            horizontalArrangement = Arrangement.spacedBy(AppDimension.Spacing.GRID_GAP)
         ) {
             Icon(
                 imageVector = Icons.Default.Notifications,
-                contentDescription = "Reminder",
+                contentDescription = stringResource(R.string.task_reminder),
                 tint = ThemeColors.TextSecondary
             )
             Text(
                 text = reminder,
-                fontSize = 16.sp,
+                fontSize = AppDimension.FontSize.LG,
                 color = ThemeColors.TextPrimary
             )
 
@@ -59,7 +60,7 @@ fun RemindersSection(reminder: String, onEditReminder: () -> Unit = {}) {
 
             Icon(
                 imageVector = Icons.Default.Edit,
-                contentDescription = "Reminder",
+                contentDescription = stringResource(R.string.common_edit),
                 tint = ThemeColors.TextSecondary,
                 modifier = Modifier.clickable {onEditReminder()}
 

@@ -2,6 +2,7 @@ package com.techquantum.tasksync.modules.tasks.dashboard.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,10 +35,13 @@ import com.techquantum.tasksync.ui.theme.ThemeColors
 @Composable
 fun TaskCard(
     task: Task,
-    onMenuClick: () -> Unit
+    onMenuClick: () -> Unit,
+    onClick: () -> Unit = {}
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick() },
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(
             containerColor = ThemeColors.CardBackground

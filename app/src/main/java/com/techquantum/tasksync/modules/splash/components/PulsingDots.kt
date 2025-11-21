@@ -18,7 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.unit.dp
+import com.techquantum.tasksync.ui.theme.AppDimension
 import com.techquantum.tasksync.ui.theme.ThemeColors
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -51,13 +51,13 @@ fun PulsingDots() {
         animatable.forEachIndexed { index, anim ->
             Box(
                 modifier = Modifier
-                    .size(12.dp)
+                    .size(AppDimension.IconSize.SMALL)
                     .scale(anim.value)
                     .clip(CircleShape)
                     .background(ThemeColors.Primary)
             )
 
-            if (index != animatable.lastIndex) Spacer(modifier = Modifier.width(10.dp))
+            if (index != animatable.lastIndex) Spacer(modifier = Modifier.width(AppDimension.Spacing.GRID_GAP))
         }
     }
 }

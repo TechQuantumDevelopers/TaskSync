@@ -31,13 +31,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.techquantum.tasksync.R
 import com.techquantum.tasksync.data.enums.TaskPriority
 import com.techquantum.tasksync.data.model.Subtask
 import com.techquantum.tasksync.data.model.TaskDetail
+import com.techquantum.tasksync.ui.theme.AppDimension
 import com.techquantum.tasksync.ui.theme.ThemeColors
 
 // Default Data
@@ -88,8 +89,8 @@ fun AddUpdateTasksScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = if (task == null) "Add Task" else "Edit Task",
-                        fontSize = 18.sp,
+                        text = if (task == null) stringResource(R.string.task_add) else stringResource(R.string.task_edit),
+                        fontSize = AppDimension.FontSize.XL,
                         fontWeight = FontWeight.Bold
                     )
                 },
@@ -97,7 +98,7 @@ fun AddUpdateTasksScreen(
                     IconButton(onClick = onBackClick) {
                         Icon(
                             imageVector = Icons.Default.Close,
-                            contentDescription = "Close"
+                            contentDescription = stringResource(R.string.common_close)
                         )
                     }
                 },
@@ -121,8 +122,8 @@ fun AddUpdateTasksScreen(
                         enabled = title.isNotBlank() && projectName.isNotBlank()
                     ) {
                         Text(
-                            text = "Save",
-                            fontSize = 16.sp,
+                            text = stringResource(R.string.task_save),
+                            fontSize = AppDimension.FontSize.LG,
                             fontWeight = FontWeight.Bold,
                             color = if (title.isNotBlank() && projectName.isNotBlank())
                                 ThemeColors.Primary
@@ -142,14 +143,14 @@ fun AddUpdateTasksScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
                 .verticalScroll(rememberScrollState())
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(AppDimension.Padding.LG),
+            verticalArrangement = Arrangement.spacedBy(AppDimension.Spacing.GRID_GAP)
         ) {
             // Task Title
             OutlinedTextField(
                 value = title,
                 onValueChange = { title = it },
-                label = { Text("Task Title") },
+                label = { Text(stringResource(R.string.task_title)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = false,
                 minLines = 2,
@@ -160,21 +161,21 @@ fun AddUpdateTasksScreen(
             OutlinedTextField(
                 value = projectName,
                 onValueChange = { projectName = it },
-                label = { Text("Project Name") },
+                label = { Text(stringResource(R.string.task_project_name)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
 
             // Priority Selection
             Text(
-                text = "Priority",
-                fontSize = 16.sp,
+                text = stringResource(R.string.task_priority),
+                fontSize = AppDimension.FontSize.LG,
                 fontWeight = FontWeight.SemiBold,
                 color = ThemeColors.TextPrimary
             )
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                horizontalArrangement = Arrangement.spacedBy(AppDimension.Spacing.GRID_GAP)
             ) {
                 TaskPriority.entries.forEach { priority ->
                     FilterChip(
@@ -193,13 +194,13 @@ fun AddUpdateTasksScreen(
             OutlinedTextField(
                 value = dueDate,
                 onValueChange = { dueDate = it },
-                label = { Text("Due Date") },
+                label = { Text(stringResource(R.string.task_due_date)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Default.DateRange,
-                        contentDescription = "Select Date"
+                        contentDescription = stringResource(R.string.task_select_date)
                     )
                 }
             )
@@ -208,7 +209,7 @@ fun AddUpdateTasksScreen(
             OutlinedTextField(
                 value = category,
                 onValueChange = { category = it },
-                label = { Text("Category") },
+                label = { Text(stringResource(R.string.task_category)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
@@ -217,7 +218,7 @@ fun AddUpdateTasksScreen(
             OutlinedTextField(
                 value = quarter,
                 onValueChange = { quarter = it },
-                label = { Text("Quarter") },
+                label = { Text(stringResource(R.string.task_quarter)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
@@ -226,10 +227,10 @@ fun AddUpdateTasksScreen(
             OutlinedTextField(
                 value = description,
                 onValueChange = { description = it },
-                label = { Text("Description") },
+                label = { Text(stringResource(R.string.task_description)) },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .heightIn(min = 120.dp),
+                    .heightIn(min = AppDimension.Heights.TEXTAREA_MIN),
                 singleLine = false,
                 minLines = 4,
                 maxLines = 8
@@ -239,13 +240,13 @@ fun AddUpdateTasksScreen(
             OutlinedTextField(
                 value = reminder,
                 onValueChange = { reminder = it },
-                label = { Text("Reminder") },
+                label = { Text(stringResource(R.string.task_reminder)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Notifications,
-                        contentDescription = "Reminder"
+                        contentDescription = stringResource(R.string.task_reminder)
                     )
                 }
             )

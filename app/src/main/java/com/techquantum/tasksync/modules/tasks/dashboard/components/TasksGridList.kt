@@ -32,7 +32,8 @@ fun TasksGridList(
                     Box(modifier = Modifier.weight(1f)) {
                         TaskCard(
                             task = task,
-                            onMenuClick = { onTaskMenuClick(task) }
+                            onMenuClick = { onTaskMenuClick(task) },
+                            onClick = { onTaskMenuClick(task) }
                         )
                     }
                 }

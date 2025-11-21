@@ -23,8 +23,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.techquantum.tasksync.R
+import com.techquantum.tasksync.ui.theme.AppDimension
 
 @Composable
 fun ThemeToggle(
@@ -37,33 +38,33 @@ fun ThemeToggle(
 
     Row(
         modifier = modifier
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(AppDimension.Radius.LG))
             .background(MaterialTheme.colorScheme.surface)
             .clickable { onToggle() }
-            .padding(8.dp),
+            .padding(AppDimension.Padding.SM),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(AppDimension.Spacing.GRID_GAP)
     ) {
         // Sun / Moon icon (use material icons to avoid resource generation issues)
         Box(
             modifier = Modifier
-                .size(28.dp)
+                .size(AppDimension.IconSize.LARGE)
                 .scale(scale),
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 imageVector = if (!isDark) Icons.Filled.WbSunny else Icons.Filled.NightsStay,
-                contentDescription = if (!isDark) "Light theme" else "Dark theme",
-                modifier = Modifier.size(20.dp)
+                contentDescription = if (!isDark) stringResource(R.string.theme_light_label) else stringResource(R.string.theme_dark_label),
+                modifier = Modifier.size(AppDimension.IconSize.SMALL)
             )
         }
 
         Text(
-            text = if (isDark) "Dark" else "Light",
-            fontSize = 12.sp,
+            text = if (isDark) stringResource(R.string.theme_dark) else stringResource(R.string.theme_light),
+            fontSize = AppDimension.FontSize.SM,
             color = MaterialTheme.colorScheme.onSurface
         )
 
-        Spacer(modifier = Modifier.size(4.dp))
+        Spacer(modifier = Modifier.size(AppDimension.Padding.XS))
     }
 }

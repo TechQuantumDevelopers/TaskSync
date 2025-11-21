@@ -22,9 +22,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.techquantum.tasksync.R
+import com.techquantum.tasksync.ui.theme.AppDimension
 import com.techquantum.tasksync.ui.theme.ThemeColors
 
 @Composable
@@ -36,28 +37,28 @@ fun TaskDetailsBottomBar(
     Surface(
         modifier = Modifier.fillMaxWidth(),
         color = ThemeColors.BackgroundLight.copy(alpha = 0.8f),
-        tonalElevation = 8.dp
+        tonalElevation = AppDimension.Elevation.CARD
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                .padding(AppDimension.Padding.LG),
+            horizontalArrangement = Arrangement.spacedBy(AppDimension.Spacing.GRID_GAP)
         ) {
             // Complete Task Button
             Button(
                 onClick = onCompleteTask,
                 modifier = Modifier
                     .weight(1f)
-                    .height(48.dp),
+                    .height(AppDimension.IconSize.BUTTON_HEIGHT),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = ThemeColors.Primary
                 ),
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(AppDimension.Radius.MD)
             ) {
                 Text(
-                    text = "Complete Task",
-                    fontSize = 16.sp,
+                    text = stringResource(R.string.task_complete),
+                    fontSize = AppDimension.FontSize.LG,
                     fontWeight = FontWeight.Bold
                 )
             }
@@ -66,13 +67,13 @@ fun TaskDetailsBottomBar(
             IconButton(
                 onClick = onEditTask,
                 modifier = Modifier
-                    .size(48.dp)
-                    .clip(RoundedCornerShape(12.dp))
+                    .size(AppDimension.IconSize.LARGE)
+                    .clip(RoundedCornerShape(AppDimension.Radius.MD))
                     .background(Color(0xFFE2E8F0))
             ) {
                 Icon(
                     imageVector = Icons.Default.Edit,
-                    contentDescription = "Edit",
+                    contentDescription = stringResource(R.string.task_edit),
                     tint = ThemeColors.TextSecondary
                 )
             }
@@ -81,13 +82,13 @@ fun TaskDetailsBottomBar(
             IconButton(
                 onClick = onArchiveTask,
                 modifier = Modifier
-                    .size(48.dp)
-                    .clip(RoundedCornerShape(12.dp))
+                    .size(AppDimension.IconSize.LARGE)
+                    .clip(RoundedCornerShape(AppDimension.Radius.MD))
                     .background(Color(0xFFE2E8F0))
             ) {
                 Icon(
                     imageVector = Icons.Default.Archive,
-                    contentDescription = "Archive",
+                    contentDescription = stringResource(R.string.common_archive),
                     tint = ThemeColors.TextSecondary
                 )
             }

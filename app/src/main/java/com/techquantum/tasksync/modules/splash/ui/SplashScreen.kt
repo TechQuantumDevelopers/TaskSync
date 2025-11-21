@@ -18,15 +18,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.techquantum.tasksync.R
 import com.techquantum.tasksync.modules.splash.components.PulsingDots
 import com.techquantum.tasksync.modules.splash.navigation.SplashRoute
 import com.techquantum.tasksync.modules.tasks.dashboard.navigation.DashboardGraphs
+import com.techquantum.tasksync.ui.theme.AppDimension
 import kotlinx.coroutines.delay
 
 @Composable
@@ -47,23 +50,21 @@ fun SplashScreen(
         ) {
             // Logo circle with app initials
             Surface(
-                modifier = Modifier
-                    .size(110.dp)
-                    .clip(CircleShape),
+                modifier = Modifier,
                 shape = CircleShape,
                 color = circleColor
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Text(
-                        text = "TS",
-                        fontSize = 36.sp,
+                        text = stringResource(R.string.splash_ts_initials),
+                        fontSize = AppDimension.FontSize.LOGO,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onPrimary
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(AppDimension.Padding.XL))
 
             // Custom loader: staggered pulsing dots
             PulsingDots()

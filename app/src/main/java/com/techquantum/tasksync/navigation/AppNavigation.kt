@@ -12,6 +12,8 @@ import com.techquantum.tasksync.modules.splash.navigation.SplashRoute
 import com.techquantum.tasksync.modules.splash.ui.SplashScreen
 import com.techquantum.tasksync.modules.tasks.addUpdate.navigation.TasksGraphs
 import com.techquantum.tasksync.modules.tasks.addUpdate.ui.AddUpdateTasksScreen
+import com.techquantum.tasksync.modules.notifications.navigation.NotificationsRoute
+import com.techquantum.tasksync.modules.notifications.ui.NotificationsScreen
 
 @Composable
 fun AppNavigation(navController: NavHostController) {
@@ -26,6 +28,10 @@ fun AppNavigation(navController: NavHostController) {
 
         composable(route = DashboardGraphs.Dashboard.route){
             DashboardScreen(navController = navController)
+        }
+
+        composable(route = NotificationsRoute.Notifications.route) {
+            NotificationsScreen()
         }
 
         // Add (no taskId)
