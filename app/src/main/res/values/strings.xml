@@ -42,4 +42,15 @@
 
     <!-- Splash -->
     <string name="splash_ts_initials">TS</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get Started</string>
+    <string name="onboarding_title_one">Organize Your Tasks</string>
+    <string name="onboarding_message_one">Keep all your tasks in one place and stay organized with our intuitive task management system.</string>
+    <string name="onboarding_title_two">Track Your Progress</string>
+    <string name="onboarding_message_two">Monitor your productivity and achieve your goals with detailed progress tracking and insights.</string>
+    <string name="onboarding_title_three">Collaborate Seamlessly</string>
+    <string name="onboarding_message_three">Work together with your team and sync your tasks across all your devices effortlessly.</string>
 </resources>

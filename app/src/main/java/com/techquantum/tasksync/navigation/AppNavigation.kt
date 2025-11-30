@@ -1,19 +1,18 @@
 package com.techquantum.tasksync.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
-import androidx.navigation.NavType
-import com.techquantum.tasksync.modules.tasks.dashboard.navigation.DashboardGraphs
-import com.techquantum.tasksync.modules.tasks.dashboard.ui.DashboardScreen
-import com.techquantum.tasksync.modules.splash.navigation.SplashRoute
-import com.techquantum.tasksync.modules.splash.ui.SplashScreen
-import com.techquantum.tasksync.modules.tasks.addUpdate.navigation.TasksGraphs
-import com.techquantum.tasksync.modules.tasks.addUpdate.ui.AddUpdateTasksScreen
+import com.techquantum.tasksync.modules.dashboard.navigation.DashboardRoute
+import com.techquantum.tasksync.modules.dashboard.ui.DashboardScreen
 import com.techquantum.tasksync.modules.notifications.navigation.NotificationsRoute
 import com.techquantum.tasksync.modules.notifications.ui.NotificationsScreen
+import com.techquantum.tasksync.modules.onboarding.navigation.OnboardingRoute
+import com.techquantum.tasksync.modules.onboarding.ui.OnboardingScreen
+import com.techquantum.tasksync.modules.splash.navigation.SplashRoute
+import com.techquantum.tasksync.modules.splash.ui.SplashScreen
 
 @Composable
 fun AppNavigation(navController: NavHostController) {
@@ -26,27 +25,16 @@ fun AppNavigation(navController: NavHostController) {
             SplashScreen(navController = navController)
         }
 
-        composable(route = DashboardGraphs.Dashboard.route){
-            DashboardScreen(navController = navController)
+        composable(route = OnboardingRoute.Onboarding.route) {
+            OnboardingScreen(navController = navController)
+        }
+
+        composable(route = DashboardRoute.Dashboard.route) {
+            DashboardScreen()
         }
 
         composable(route = NotificationsRoute.Notifications.route) {
             NotificationsScreen()
         }
-
-        // Add (no taskId)
-        composable(route = TasksGraphs.Tasks().route) {
-            AddUpdateTasksScreen(taskId = null, navController = navController)
-        }
-
-        // Edit (with taskId argument)
-        composable(
-            route = TasksGraphs.Tasks.ROUTE_WITH_ARG,
-            arguments = listOf(navArgument(TasksGraphs.Tasks.ARG_TASK_ID) { type = NavType.StringType; nullable = true })
-        ) { backStackEntry ->
-            val taskId = backStackEntry.arguments?.getString(TasksGraphs.Tasks.ARG_TASK_ID)
-            AddUpdateTasksScreen(taskId = taskId, navController = navController)
-        }
-
     }
 }
