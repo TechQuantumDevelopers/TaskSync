@@ -68,5 +68,8 @@ object AppDimension {
         val NOTE_CARD_HEIGHT = 160.dp
         val NOTE_CARD_WIDTH = 220.dp
         val TASK_ITEM_MIN_HEIGHT = 56.dp
+        val NOTE_GRID_SPACING = 12.dp
+        val PINNED_NOTE_WIDTH = 200.dp
+        val PINNED_NOTE_HEIGHT = 140.dp
     }
 }

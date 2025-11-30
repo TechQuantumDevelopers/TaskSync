@@ -31,6 +31,7 @@ import com.techquantum.tasksync.ui.theme.ThemeColors
 @Composable
 fun DashboardScreen() {
     var selectedTab by remember { mutableStateOf(Tab.TASKS) }
+    var selectedFilter by remember { mutableStateOf("All") }
 
     // Sample data with mutable state
     val tasks = remember {
@@ -83,28 +84,48 @@ fun DashboardScreen() {
                 title = "Project Phoenix Ideas",
                 content = "Initial thoughts on rebranding, focusing on a cleaner aesthetic. We need to explore new color...",
                 category = "MARKETING",
-                color = NoteColor.ORANGE
+                color = NoteColor.ORANGE,
+                isPinned = true
             ),
             Note(
                 id = "2",
                 title = "Meeting Notes",
                 content = "Q4 roadmap discussion, key takeaways: prioritize customer feedback fea...",
                 category = "PRODUCT",
-                color = NoteColor.PINK
+                color = NoteColor.PINK,
+                isPinned = true
             ),
              Note(
                 id = "3",
                 title = "Design System Updates",
                 content = "Review the new typography scale and color palette. Ensure accessibility compliance...",
                 category = "DESIGN",
-                color = NoteColor.BLUE
+                color = NoteColor.BLUE,
+                isPinned = false
             ),
             Note(
                 id = "4",
                 title = "Team Building Event",
                 content = "Ideas for the next team outing: bowling, escape room, or a park picnic...",
                 category = "HR",
-                color = NoteColor.GREEN
+                color = NoteColor.GREEN,
+                isPinned = false
+            ),
+            Note(
+                id = "5",
+                title = "Q1 Marketing Plan",
+                content = "Focus on social media campaigns and content marketing. Explore influencer collaborations...",
+                category = "MARKETING",
+                color = NoteColor.ORANGE,
+                isPinned = false
+            ),
+            Note(
+                id = "6",
+                title = "App Feature Ideas",
+                content = "Gamification elements, AI-powered suggestions, Dark mode enhancements...",
+                category = "IDEAS",
+                color = NoteColor.PURPLE,
+                isPinned = false
             )
         )
     }
@@ -283,26 +304,46 @@ fun DashboardScreen() {
                 item {
                     Spacer(modifier = Modifier.height(AppDimension.Padding.MD))
                 }
-                
-                // Grid of Notes (simulated with standard items for now as LazyVerticalGrid inside LazyColumn is tricky without fixed height)
-                // We'll just list them for this iteration
-                items(notes.chunked(2)) { rowNotes ->
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = AppDimension.Padding.LG, vertical = AppDimension.Padding.SM),
-                        horizontalArrangement = Arrangement.spacedBy(AppDimension.Padding.MD)
-                    ) {
-                        for (note in rowNotes) {
-                            PinnedNoteCard(
-                                note = note,
-                                modifier = Modifier.weight(1f)
-                            )
-                        }
-                        if (rowNotes.size == 1) {
-                            Spacer(modifier = Modifier.weight(1f))
-                        }
+
+                // Pinned Notes Section
+                item {
+                    val pinnedNotes = notes.filter { it.isPinned }
+                    if (pinnedNotes.isNotEmpty()) {
+                        PinnedNotesSection(notes = pinnedNotes)
+                        Spacer(modifier = Modifier.height(AppDimension.Padding.XL))
                     }
+                }
+
+                // All Notes Header
+                item {
+                    Text(
+                        text = stringResource(R.string.dashboard_all_notes),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = ThemeColors.CardBackground,
+                        modifier = Modifier.padding(horizontal = AppDimension.Padding.LG)
+                    )
+                    Spacer(modifier = Modifier.height(AppDimension.Padding.MD))
+                }
+
+                // Filter Chips
+                item {
+                    NoteFilterChips(
+                        selectedFilter = selectedFilter,
+                        onFilterSelected = { selectedFilter = it }
+                    )
+                    Spacer(modifier = Modifier.height(AppDimension.Padding.LG))
+                }
+                
+                // Notes Grid
+                item {
+                    val filteredNotes = if (selectedFilter == "All") {
+                        notes
+                    } else {
+                        notes.filter { it.category.equals(selectedFilter, ignoreCase = true) }
+                    }
+                    
+                    NotesGrid(notes = filteredNotes)
                 }
             }
         }

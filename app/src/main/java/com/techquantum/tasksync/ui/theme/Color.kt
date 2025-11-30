@@ -42,13 +42,26 @@ object ThemeColors {
     val SurfaceDark = Color(0xFF1C242E)          // Elevated surface / Cards
     val CardDark = Color(0xFF2A333F)             // Inputs / list item background
 
+    // Note Colors
     val NoteOrange = Color(0xFFFFA726)
-
     val NotePink = Color(0xFFFF80AB)
-
     val NoteBlue = Color(0xFF42A5F5)
-
     val NoteGreen = Color(0xFF66BB6A)
+    val NotePurple = Color(0xFFAB47BC)
+    val NoteYellow = Color(0xFFFFEE58)
+
+    // Note Category Tags
+    val TagMarketing = Color(0xFFFFD180)
+    val TagProduct = Color(0xFFF48FB1)
+    val TagDesign = Color(0xFF90CAF9)
+    val TagHR = Color(0xFFA5D6A7)
+    val TagIdeas = Color(0xFFCE93D8)
+
+    // Filter Chips
+    val ChipSelected = Color(0xFF3E62F5)
+    val ChipUnselected = Color(0xFF2A333F)
+    val ChipTextSelected = Color(0xFFFFFFFF)
+    val ChipTextUnselected = Color(0xFF9CA3AF)
 
     // Legacy (Keeping or can remove if unused)
     val Purple80 = Color(0xFFD0BCFF)
