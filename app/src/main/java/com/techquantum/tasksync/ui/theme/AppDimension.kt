@@ -50,5 +50,23 @@ object AppDimension {
     // Heights / specific dimension constants
     object Heights {
         val TEXTAREA_MIN = 120.dp
+        val SETTINGS_OPTION_ITEM = 72.dp
+    }
+    
+    // Settings specific dimensions
+    object Settings {
+        val ICON_BACKGROUND_SIZE = 48.dp
+        val BOTTOM_SHEET_CORNER_RADIUS = 24.dp
+        val SECTION_SPACING = 24.dp
+    }
+    
+    // Dashboard specific dimensions
+    object Dashboard {
+        val SUBTASK_INDENT = 48.dp
+        val SUBTASK_LINE_WIDTH = 2.dp
+        val SUBTASK_LINE_START_OFFSET = 11.dp
+        val NOTE_CARD_HEIGHT = 160.dp
+        val NOTE_CARD_WIDTH = 220.dp
+        val TASK_ITEM_MIN_HEIGHT = 56.dp
     }
 }

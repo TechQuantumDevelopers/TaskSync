@@ -1,7 +1,6 @@
 package com.techquantum.tasksync.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -11,12 +10,13 @@ import com.techquantum.tasksync.modules.notifications.navigation.NotificationsRo
 import com.techquantum.tasksync.modules.notifications.ui.NotificationsScreen
 import com.techquantum.tasksync.modules.onboarding.navigation.OnboardingRoute
 import com.techquantum.tasksync.modules.onboarding.ui.OnboardingScreen
+import com.techquantum.tasksync.modules.settings.navigation.SettingsRoute
+import com.techquantum.tasksync.modules.settings.ui.SettingsScreen
 import com.techquantum.tasksync.modules.splash.navigation.SplashRoute
 import com.techquantum.tasksync.modules.splash.ui.SplashScreen
 
 @Composable
 fun AppNavigation(navController: NavHostController) {
-
     NavHost(
         navController = navController,
         startDestination = SplashRoute.Splash.route
@@ -35,6 +35,10 @@ fun AppNavigation(navController: NavHostController) {
 
         composable(route = NotificationsRoute.Notifications.route) {
             NotificationsScreen()
+        }
+
+        composable(route = SettingsRoute.Settings.route) {
+            SettingsScreen(navController = navController)
         }
     }
 }

@@ -2,11 +2,24 @@
     <string name="app_name">TaskSync</string>
 
     <!-- Dashboard -->
+    <string name="dashboard_app_title">TaskFlow</string>
+    <string name="dashboard_search_hint">Search tasks &amp; notes…</string>
+    <string name="dashboard_tab_tasks">Tasks</string>
+    <string name="dashboard_tab_notes">Notes</string>
+    <string name="dashboard_today_tasks">Today\'s Tasks</string>
+    <string name="dashboard_today_tasks_count">%1$d/%2$d</string>
+    <string name="dashboard_see_all">See All</string>
+    <string name="dashboard_pinned_notes">Pinned Notes</string>
+    <string name="dashboard_due_in_hours">Due in %1$d hours</string>
+    <string name="dashboard_add_task_cd">Add task</string>
     <string name="dashboard_today">Today</string>
     <string name="dashboard_upcoming">Upcoming</string>
     <string name="dashboard_you_have_active_tasks">You have %1$d active tasks.</string>
     <string name="dashboard_projects">Projects</string>
     <string name="dashboard_view_all">View All</string>
+    <string name="dashboard_task_progress">%1$d/%2$d</string>
+    <string name="dashboard_expand_cd">Expand task</string>
+    <string name="dashboard_collapse_cd">Collapse task</string>
 
     <!-- Task / AddEdit -->
     <string name="task_add">Add Task</string>
@@ -53,4 +66,44 @@
     <string name="onboarding_message_two">Monitor your productivity and achieve your goals with detailed progress tracking and insights.</string>
     <string name="onboarding_title_three">Collaborate Seamlessly</string>
     <string name="onboarding_message_three">Work together with your team and sync your tasks across all your devices effortlessly.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_section_data_management">Data Management</string>
+    <string name="settings_section_about">About</string>
+    
+    <!-- Settings - Appearance -->
+    <string name="settings_theme_label">Theme</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system">System</string>
+    
+    <!-- Settings - Data Management -->
+    <string name="settings_backup_title">Backup &amp; Export</string>
+    <string name="settings_backup_description">Save all your data to a local file</string>
+    <string name="settings_restore_title">Restore from Backup</string>
+    <string name="settings_restore_description">Import data from a backup file</string>
+    
+    <!-- Settings - About -->
+    <string name="settings_app_version_label">App Version</string>
+    <string name="settings_privacy_policy">Privacy Policy</string>
+    <string name="settings_terms_of_service">Terms of Service</string>
+    
+    <!-- Backup & Restore Bottom Sheet -->
+    <string name="backup_sheet_title">Backup &amp; Restore</string>
+    <string name="backup_export_section_title">Export Data</string>
+    <string name="backup_export_description">Create a JSON file of all your tasks, notes, and reminders that you can save for safekeeping.</string>
+    <string name="backup_action_export">Export Backup</string>
+    <string name="backup_last_backup_label">Last backup: %1$s</string>
+    
+    <!-- Import Confirmation Dialog -->
+    <string name="restore_dialog_title">Import Backup?</string>
+    <string name="restore_dialog_message">This will overwrite all existing data. This action cannot be undone. Are you sure you want to continue?</string>
+    <string name="restore_action_import">Import &amp; Overwrite</string>
+    <string name="restore_action_cancel">Cancel</string>
+    
+    <!-- Content Descriptions -->
+    <string name="settings_back_cd">Back</string>
+    <string name="settings_theme_icon_cd">Theme icon</string>
 </resources>

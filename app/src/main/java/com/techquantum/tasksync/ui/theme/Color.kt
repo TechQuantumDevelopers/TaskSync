@@ -12,6 +12,19 @@ object ThemeColors {
     // Supporting Colors
     val Success = Color(0xFF4CCB72)        // Soft Green
     val Warning = Color(0xFFF6C445)        // Warm Amber
+    val Danger = Color(0xFFEF4444)         // Danger Red
+
+    // Settings Icon Backgrounds
+    val IconBackgroundGreen = Color(0xFF4CCB72).copy(alpha = 0.15f)
+    val IconBackgroundOrange = Color(0xFFFF8C42).copy(alpha = 0.15f)
+    val IconBackgroundBlue = Color(0xFF3E62F5).copy(alpha = 0.15f)
+
+    // FAB Gradient
+    val FabGradientStart = Color(0xFF6B5FED)  // Purple
+    val FabGradientEnd = Color(0xFF3E62F5)    // Blue
+
+    // Vertical Line for Subtasks
+    val SubtaskConnectorLine = Color(0xFF4B5563)
 
     // Light Mode Backgrounds
     val BackgroundLight = Color(0xFFF7F9FC)      // Soft Off-White
@@ -28,6 +41,14 @@ object ThemeColors {
     val BackgroundDark = Color(0xFF0E141B)       // Deep Blue-Black
     val SurfaceDark = Color(0xFF1C242E)          // Elevated surface / Cards
     val CardDark = Color(0xFF2A333F)             // Inputs / list item background
+
+    val NoteOrange = Color(0xFFFFA726)
+
+    val NotePink = Color(0xFFFF80AB)
+
+    val NoteBlue = Color(0xFF42A5F5)
+
+    val NoteGreen = Color(0xFF66BB6A)
 
     // Legacy (Keeping or can remove if unused)
     val Purple80 = Color(0xFFD0BCFF)
