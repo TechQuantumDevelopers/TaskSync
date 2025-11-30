@@ -82,26 +82,31 @@ fun OnboardingScreen(navController: NavHostController) {
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            // Skip button in top-right
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(AppDimension.Padding.LG),
-                contentAlignment = Alignment.TopEnd
-            ) {
-                TextButton(onClick = {
-                    preferencesManager.setOnboardingCompleted()
-                    navController.navigate(DashboardRoute.Dashboard.route) {
-                        popUpTo(0) { inclusive = true }
+            // Skip button in top-right (only on first two pages)
+            if (pagerState.currentPage < pages.size - 1) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(AppDimension.Padding.LG),
+                    contentAlignment = Alignment.TopEnd
+                ) {
+                    TextButton(onClick = {
+                        preferencesManager.setOnboardingCompleted()
+                        navController.navigate(DashboardRoute.Dashboard.route) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }) {
+                        Text(
+                            text = stringResource(R.string.onboarding_skip),
+                            color = ThemeColors.Primary,
+                            fontSize = AppDimension.FontSize.LG,
+                            fontWeight = FontWeight.SemiBold
+                        )
                     }
-                }) {
-                    Text(
-                        text = stringResource(R.string.onboarding_skip),
-                        color = ThemeColors.Primary,
-                        fontSize = AppDimension.FontSize.LG,
-                        fontWeight = FontWeight.SemiBold
-                    )
                 }
+            } else {
+                // Empty spacer to maintain layout consistency on last page
+                Spacer(modifier = Modifier.height(AppDimension.IconSize.BUTTON_HEIGHT + AppDimension.Padding.LG))
             }
 
             // Horizontal Pager
@@ -234,7 +239,7 @@ fun OnboardingPageContent(page: OnboardingPage) {
 @Composable
 fun OnboardingPageContentPreview() {
     OnboardingPageContent(
-        page =  OnboardingPage(
+        page = OnboardingPage(
             title = R.string.onboarding_title_one,
             description = R.string.onboarding_message_one,
             image = R.drawable.ic_onboarding_one
